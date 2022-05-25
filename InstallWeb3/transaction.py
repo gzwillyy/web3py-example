@@ -27,7 +27,7 @@ wei = Web3.fromWei(500000000, 'gwei')
 dump(" 500000000 gwei = {} wei".format(wei))
 
 
-# 这些概念将在IPython shell中演示
+# 这些概念有的必须在IPython shell中演示
 # 模拟节点
 w3 = Web3(Web3.EthereumTesterProvider())
 
