@@ -47,7 +47,7 @@ def todo(item):
         "19951028",
     ]
     while True:
-        acct = w3.eth.account.create()
+        acct = w3.eth.account.create("19951028")
         a = [acct.address.endswith(item) for item in arr]
         print(acct.address)
         if any(a) or acct.address.startswith("0x19951028"):
