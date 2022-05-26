@@ -10,7 +10,7 @@ except ImportError:
 # from pprint import pprint as dump
 
 
-pp = ProcessPoolExecutor(5)
+pp = ProcessPoolExecutor(4)
 
 
 def todo(item):
@@ -49,7 +49,7 @@ def todo(item):
 
 futures = []
 
-for item in range(5):
+for item in range(4):
     future = pp.submit(todo,item)
     futures.append(future)
 
