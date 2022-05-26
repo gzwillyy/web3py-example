@@ -10,14 +10,12 @@ except ImportError:
 # from pprint import pprint as dump
 
 
-pp = ProcessPoolExecutor(2)
+pp = ProcessPoolExecutor(4)
 
 
 def todo(item):
     w3 = Web3()
     arr = [
-        "1",
-        "000",
         "000000000",
         "111111111",
         "222222222",
@@ -51,7 +49,7 @@ def todo(item):
 
 futures = []
 
-for item in range(2):
+for item in range(4):
     future = pp.submit(todo,item)
     futures.append(future)
 
