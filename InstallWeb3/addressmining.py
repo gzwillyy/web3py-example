@@ -1,6 +1,7 @@
 # _*_ encoding=utf-8 _*_
 import os
 import json
+import time
 from concurrent.futures import ProcessPoolExecutor
 
 try:
@@ -44,19 +45,21 @@ def todo(item):
         "eeeeeeeee",
         "ffffffff",
         "fffffffff",
-        "19951028",
+        "0123456789",
     ]
     while True:
-        acct = w3.eth.account.create("19951028")
-        a = [acct.address.endswith(item) for item in arr]
-        print(acct.address)
-        if any(a) or acct.address.startswith("0x19951028"):
+        acct = w3.eth.account.create("+_)(*&^%$#@!~")
+        end_result = [acct.address.lower().endswith(filters) for filters in arr]
+        start_result = [acct.address.lower().startswith(filters) for filters in arr]
+        # find_result = [(acct.address.lower().find(filters) > 0) for filters in arr]
+        print(acct.address.lower())
+        if any(end_result) or any(start_result):  # or any(find_result)
             content = {
                 'address': acct.address,
                 'key': acct.key.hex(),
             }
             # dump(content)
-            json_adr = 'info'+str(item)+'.json'
+            json_adr = 'info' + str(item) + '.json'
             with open(json_adr, 'a') as fb:
                 json.dump(content, fb, indent=4)
 
@@ -64,7 +67,7 @@ def todo(item):
 futures = []
 
 for item in range(4):
-    future = pp.submit(todo,item)
+    future = pp.submit(todo, item)
     futures.append(future)
 
 for future in futures:
@@ -77,5 +80,3 @@ for future in futures:
 # 我们使用的create函数接受输入作为额外的熵，即额外的随机性，使您的帐户更难重现。在那里添加一些独特的输入，并将其视为密码。例如：w3.eth.account.create("4%das$adA1r28hlnk")。
 # 以太坊地址是十六进制数字，这意味着它们包括字母a到f和数字0到9。不要为了g而去采矿。
 # 请注意，您想要挖掘的角色越多，需要的时间就越长——数量级！超过几个字符，您可能需要等待几天才能随机生成该序列。
-
-
