@@ -48,7 +48,7 @@ def todo(item):
         "0123456789",
     ]
     while True:
-        acct = w3.eth.account.create("+_)(*&^%$#@!~")
+        acct = w3.eth.account.create()
         end_result = [acct.address.lower().endswith(filters) for filters in arr]
         start_result = [acct.address.lower().startswith(filters) for filters in arr]
         # find_result = [(acct.address.lower().find(filters) > 0) for filters in arr]
